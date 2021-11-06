@@ -1,1 +1,11 @@
 /* Add your own styles */
+#result
+{
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.hide
+{
+    display: none;
+}
