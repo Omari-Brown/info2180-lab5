@@ -1,11 +1,102 @@
 /* Add your own styles */
-#result
+header
 {
-    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: darkslategray;
+    color: white;
+    height: 150px;
+    margin-bottom: 40px;
+}
+h1
+{
+    margin-left: 20px;
+    font-weight: bold;
+}
+img
+{
+    height:100px;
+    width: 150px;
+    /*border-radius: 15px 50px;*/
+}
+#controls
+{
+    display: flex;
+    flex-direction: column;
+    /* Flex direction not necessary for a single item
+    border: 2px solid blue;*/
     border-radius: 10px;
     margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+#lookupbuttons
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /*border: 2px solid blue;*/
+}
+#result
+{
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
 }
 .hide
 {
     display: none;
+}
+table
+{
+    border-collapse: collapse;
+    width: 800px;
+    /*background-color: lightgray;*/
+}
+table, th, td 
+{
+    border: 1px solid black;
+    padding: 5px;
+    font-size: 16px;
+}
+th
+{
+    font-size: 24px;
+    padding: 8px;
+    background-color: lightblue;
+}
+tr:nth-child(even)
+{
+    background-color: #f2f2f2;
+}
+tr:hover 
+{
+    background-color: #ddd;
+}
+button
+{
+    width: 150px;
+    height: 40px;
+    line-height: 30px;
+    vertical-align: center;
+    border-radius: 5px;
+    margin: 10px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+#lookup1
+{
+    background-color: green;
+}
+#lookup2
+{
+    background-color: blue;
+}
+#country
+{
+    width: 500px;
+    height: 35px;
 }

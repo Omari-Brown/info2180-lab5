@@ -8,11 +8,6 @@ $username = 'lab5_user';
 $password = 'password123';
 $dbname = 'world';
 
-
-if (isset($_GET["country"]))
-{
-   echo "<br>Country is: ".$_GET["country"];
-}
 $country = filter_input(INPUT_GET,'country',FILTER_SANITIZE_STRING);
 $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
 
@@ -22,8 +17,7 @@ $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $p
 //$stmt = $conn->query("SELECT * FROM countries WHERE population > 100000000");
 //echo "<br> SELECT * FROM countries WHERE name = $country";
 //$stmt = $conn->query("SELECT * FROM countries WHERE name ='$country'");
-$stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%'");
-
+$stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%' ORDER BY name ASC");
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
  
   /*if($_REQUEST['query'] == ""):
@@ -52,8 +46,23 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<ul>
-<?php foreach ($results as $row): ?>
-  <li><?= $row['name'] . ' is ruled by ' . $row['head_of_state']; ?></li>
-<?php endforeach; ?>
-</ul>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Continent</th>
+            <th scope="col">Independence Year</th>
+            <th scope="col">Head of State</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($results as $row): ?>
+        <tr>
+            <td><?= $row['name']; ?></td>
+            <td><?= $row['continent']; ?></td>
+            <td><?= $row['independence_year']; ?></td>
+            <td><?= $row['head_of_state']; ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

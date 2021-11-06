@@ -4,9 +4,9 @@ window.onload=function()
 {
     console.log("Window loaded");
     var lookupresult = document.getElementById("result");
-    var lookupbutton = document.getElementById("lookup");
-    lookupresult.setAttribute("class", "hide");
-    lookupbutton.addEventListener("click", function ()
+    var lookup1button = document.getElementById("lookup1");
+    //lookupresult.setAttribute("class", "hide");
+    lookup1button.addEventListener("click", function ()
     {
         var country = document.getElementById("country").value.trim();
         console.log(`Country is ${country}`);
@@ -16,7 +16,7 @@ window.onload=function()
             .then(response => response.text())
             .then(data => 
             {
-                lookupresult.classList.remove("hide");
+                //lookupresult.classList.remove("hide");
                 lookupresult.innerHTML = data;
             })
             .catch(error => 
