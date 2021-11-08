@@ -4,27 +4,35 @@ window.onload=function()
 {
     console.log("Window loaded");
     var lookupresult = document.getElementById("result");
-    var lookup1button = document.getElementById("lookup1");
-    //lookupresult.setAttribute("class", "hide");
-    lookup1button.addEventListener("click", function ()
+    var buttons = document.getElementsByTagName("button");
+    Array.from(buttons).forEach(function (button)
     {
-        var country = document.getElementById("country").value.trim();
-        console.log(`Country is ${country}`);
-        console.log(`Length is: ${country.length}`);
-        fetch(`world.php?country=${country}`)
-            .then(console.log("Fetching"))
-            .then(response => response.text())
-            .then(data => 
+        button.addEventListener("click", function ()
+        {
+            var country = document.getElementById("country").value.trim();
+            var context = "";
+            //if (document.getElementById("lookup2").clicked)
+            console.log(event.target.id);
+            if(event.target.id == "lookup2")
             {
-                //lookupresult.classList.remove("hide");
-                lookupresult.innerHTML = data;
-            })
-            .catch(error => 
-            {
-                console.log("There was an error");
-                console.log(error);
-            });
+                console.log("Lookup Cities");
+                context = "cities";
+            }
+            console.log(`Country is ${country}`);
+            console.log(`Context is ${context}`);
+            fetch(`world.php?country=${country}&context=${context}`)
+                .then(console.log("Fetching"))
+                .then(response => response.text())
+                .then(data => lookupresult.innerHTML = data)
+                .catch(error => 
+                {
+                    console.log("There was an error");
+                    console.log(error);
+                });
+        });
     });
+    //lookupresult.setAttribute("class", "hide");
+    
     /*
     searchbutton.addEventListener("click", function ()
     {
